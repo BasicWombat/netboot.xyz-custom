@@ -1,8 +1,7 @@
-## netboot.xyz-custom
+## BasicWombat netboot.xyz-custom
 
 ### EXPERIMENTAL
 
-Fork me!  This repo will allow you to create custom menus within netboot.xyz.
 It works by using your github user name that you input and chains to this URL:
 
     https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom.ipxe
