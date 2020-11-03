@@ -18,14 +18,14 @@ goto ${custom_choice}
 goto custom_exit
 
 :option_one
-kernel http://torrent.serenity.local/ubuntu-budgie-20.04-desktop-amd64/casper/vmlinuz
-initrd http://torrent.serenity.local/ubuntu-budgie-20.04-desktop-amd64/casper/initrd
+kernel http://torrent.serenity.local:8080/ubuntu-budgie-20.04-desktop-amd64/casper/vmlinuz
+initrd http://torrent.serenity.local:8080/ubuntu-budgie-20.04-desktop-amd64/casper/initrd
 imgargs vmlinuz put_kernel_img_args_here
 boot || goto custom_exit
 
 :option_two
 kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://torrent.serenity.local/ubuntu-20.04-live-server-amd64.iso
+initrd http://torrent.serenity.local:8080/ubuntu-20.04-live-server-amd64.iso
 boot || goto custom_exit
 
 :option_three
