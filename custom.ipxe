@@ -10,6 +10,7 @@ item --gap This is the first sub menu
 item option_one ${space} Ubuntu Budgie 20.04
 item option_two ${space} Ubuntu Server 20.04
 item option_win ${space} Windows 10 20H2 Install
+item option_bootcd ${space} Hirens Boot CD
 ### item --gap This is a second sub menu
 ### item option_three ${space} Loads another custom sub menu
 ### item option_four ${space} This is option four
@@ -19,14 +20,19 @@ goto ${custom_choice}
 goto custom_exit
 
 :option_one
-kernel http://torrent.serenity.local:8080/ubuntu-budgie-20.04-desktop-amd64/casper/vmlinuz
-initrd http://torrent.serenity.local:8080/ubuntu-budgie-20.04-desktop-amd64/casper/initrd
+kernel http://torrent.serenity.local:8081/ubuntu-budgie-20.04-desktop-amd64/casper/vmlinuz
+initrd http://torrent.serenity.local:8081/ubuntu-budgie-20.04-desktop-amd64/casper/initrd
 imgargs vmlinuz put_kernel_img_args_here
 boot || goto custom_exit
 
 :option_two
 kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://torrent.serenity.local:8080/ubuntu-20.04-live-server-amd64.iso
+initrd http://torrent.serenity.local:8081/ubuntu-20.04-live-server-amd64.iso
+boot || goto custom_exit
+
+:option_bootcd
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://torrent.serenity.local:8081/Hiren's.BootCD.15.2.iso
 boot || goto custom_exit
 
 :option_three
