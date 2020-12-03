@@ -9,12 +9,13 @@ menu BasicWomabt iPXE Menu
 item --gap This is the first sub menu
 item option_one ${space} Ubuntu Budgie 20.04
 item option_two ${space} Ubuntu Server 20.04
-item option_win ${space} Windows 10 20H2 Install
-item option_bootcd ${space} Hirens Boot CD
-item option_xcp ${space} XCP Net Install
+item option_three ${space} Windows 10 20H2 Install
+item option_four ${space} Hirens Boot CD
+item option_five ${space} XCP Net Install
 ### item --gap This is a second sub menu
 ### item option_three ${space} Loads another custom sub menu
 ### item option_four ${space} This is option four
+
 choose custom_choice || goto custom_exit
 echo ${cls}
 goto ${custom_choice}
@@ -30,18 +31,7 @@ kernel https://boot.netboot.xyz/memdisk raw iso
 initrd http://torrent.serenity.local:8081/ubuntu-20.04-live-server-amd64.iso
 boot || goto custom_exit
 
-:option_bootcd
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://torrent.serenity.local:8081/Hirens.BootCD.15.2.iso
-boot || goto custom_exit
-
-:option_xcp
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://torrent.serenity.local:8081/xcp-ng-8.2.0-netinstall.iso
-boot || goto custom_exit
-
-
-:option_win
+:option_three
 set url http://torrent.serenity.local:8081/Win10_20H2/x64
 imgfree
 kernel http://${boot_domain}/wimboot
@@ -53,6 +43,16 @@ initrd -n boot.sdi    ${url}/boot/boot.sdi boot.sdi ||
 initrd -n boot.sdi    ${url}/Boot/boot.sdi boot.sdi ||
 initrd -n boot.wim    ${url}/sources/boot.wim boot.wim
 boot
+
+:option_four
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://torrent.serenity.local:8081/Hirens.BootCD.15.2.iso
+boot || goto custom_exit
+
+:option_five
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://torrent.serenity.local:8081/xcp-ng-8.2.0-netinstall.iso
+boot || goto custom_exit
 
 :custom_exit
 chain utils.ipxe
