@@ -20,9 +20,8 @@ goto ${custom_choice}
 goto custom_exit
 
 :option_one
-kernel http://torrent.serenity.local:8081/ubuntu-budgie-20.04-desktop-amd64/casper/vmlinuz
-initrd http://torrent.serenity.local:8081/ubuntu-budgie-20.04-desktop-amd64/casper/initrd
-imgargs vmlinuz put_kernel_img_args_here
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://torrent.serenity.local:8081/ubuntu-budgie-20.04-desktop-amd64.iso
 boot || goto custom_exit
 
 :option_two
@@ -32,12 +31,9 @@ boot || goto custom_exit
 
 :option_bootcd
 kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://torrent.serenity.local:8081/Hiren's.BootCD.15.2.iso
+initrd http://torrent.serenity.local:8081/Hirens.BootCD.15.2.iso
 boot || goto custom_exit
 
-:option_three
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom1.ipxe || goto custom
 
 :option_win
 set url http://torrent.serenity.local:8081/Win10_20H2/x64
