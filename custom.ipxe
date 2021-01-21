@@ -41,13 +41,13 @@ boot || goto custom_exit
 set url ${localurl}/Win10_20H2/x64
 imgfree
 kernel http://${boot_domain}/wimboot
-initrd -n bootmgr     ${url}/bootmgr       bootmgr ||
-initrd -n bootmgr.efi ${url}/bootmgr.efi   bootmgr.efi ||      
-initrd -n bcd         ${url}/boot/bcd      bcd ||
-initrd -n bcd         ${url}/Boot/BCD      bcd ||
-initrd -n boot.sdi    ${url}/boot/boot.sdi boot.sdi ||
-initrd -n boot.sdi    ${url}/Boot/boot.sdi boot.sdi ||
-initrd -n boot.wim    ${url}/sources/boot.wim boot.wim
+initrd -n bootmgr     ${localurl}/bootmgr       bootmgr ||
+initrd -n bootmgr.efi ${localurl}/bootmgr.efi   bootmgr.efi ||      
+initrd -n bcd         ${localurl}/boot/bcd      bcd ||
+initrd -n bcd         ${localurl}/Boot/BCD      bcd ||
+initrd -n boot.sdi    ${localurl}/boot/boot.sdi boot.sdi ||
+initrd -n boot.sdi    ${localurl}/Boot/boot.sdi boot.sdi ||
+initrd -n boot.wim    ${localurl}/sources/boot.wim boot.wim
 boot
 
 :option_four
