@@ -10,11 +10,11 @@ item --gap
 item option_one ${space} Ubuntu Budgie 20.04
 item option_two ${space} Ubuntu Server 20.04
 item --gap
-item option_three ${space} Windows 10 20H2 Install
+item option_win1020h2 ${space} Windows 10 20H2 Install
+item option_win101511 ${space} Windows 10 1511 Install
 item --gap
 item option_four ${space} Hirens Boot CD
-item --gap
-item option_five ${space} XCP Net Install
+
 ### item --gap This is a second sub menu
 ### item option_three ${space} Loads another custom sub menu
 ### item option_four ${space} This is option four
@@ -25,39 +25,48 @@ goto ${custom_choice}
 goto custom_exit
 
 ### Variable for local software host
-set localurl http://torrent.serenity.local:8081
+### 23/1/2020: Variable URL not working. Replaced each with actual URL below.
+### set localurl http://torrent.serenity.local:8081
 
 :option_one
 kernel https://boot.netboot.xyz/memdisk raw iso
-initrd ${localurl}/ubuntu-budgie-20.04-desktop-amd64.iso
+initrd http://torrent.serenity.local:8081/ubuntu-budgie-20.04-desktop-amd64.iso
 boot || goto custom_exit
 
 :option_two
 kernel https://boot.netboot.xyz/memdisk raw iso
-initrd ${localurl}/ubuntu-20.04-live-server-amd64.iso
+initrd http://torrent.serenity.local:8081/ubuntu-20.04-live-server-amd64.iso
 boot || goto custom_exit
 
-:option_three
+:option_win1020h2
 set url ${localurl}/Win10_20H2/x64
 imgfree
 kernel http://${boot_domain}/wimboot
-initrd -n bootmgr     ${localurl}/bootmgr       bootmgr ||
-initrd -n bootmgr.efi ${localurl}/bootmgr.efi   bootmgr.efi ||      
-initrd -n bcd         ${localurl}/boot/bcd      bcd ||
-initrd -n bcd         ${localurl}/Boot/BCD      bcd ||
-initrd -n boot.sdi    ${localurl}/boot/boot.sdi boot.sdi ||
-initrd -n boot.sdi    ${localurl}/Boot/boot.sdi boot.sdi ||
-initrd -n boot.wim    ${localurl}/sources/boot.wim boot.wim
+initrd -n bootmgr     http://torrent.serenity.local:8081/Win10_20H2/bootmgr       bootmgr ||
+initrd -n bootmgr.efi http://torrent.serenity.local:8081/Win10_20H2/bootmgr.efi   bootmgr.efi ||      
+initrd -n bcd         http://torrent.serenity.local:8081/Win10_20H2/boot/bcd      bcd ||
+initrd -n bcd         http://torrent.serenity.local:8081/Win10_20H2/Boot/BCD      bcd ||
+initrd -n boot.sdi    http://torrent.serenity.local:8081/Win10_20H2/boot/boot.sdi boot.sdi ||
+initrd -n boot.sdi    http://torrent.serenity.local:8081/Win10_20H2/Boot/boot.sdi boot.sdi ||
+initrd -n boot.wim    http://torrent.serenity.local:8081/Win10_20H2/sources/boot.wim boot.wim
+boot
+
+:option_win101511
+set url ${localurl}/Win10_1511/x64
+imgfree
+kernel http://${boot_domain}/wimboot
+initrd -n bootmgr     http://torrent.serenity.local:8081/Win10_1511/bootmgr       bootmgr ||
+initrd -n bootmgr.efi http://torrent.serenity.local:8081/Win10_1511/bootmgr.efi   bootmgr.efi ||      
+initrd -n bcd         http://torrent.serenity.local:8081/Win10_1511/boot/bcd      bcd ||
+initrd -n bcd         http://torrent.serenity.local:8081/Win10_1511/Boot/BCD      bcd ||
+initrd -n boot.sdi    http://torrent.serenity.local:8081/Win10_1511/boot/boot.sdi boot.sdi ||
+initrd -n boot.sdi    http://torrent.serenity.local:8081/Win10_1511/Boot/boot.sdi boot.sdi ||
+initrd -n boot.wim    http://torrent.serenity.local:8081/Win10_1511/sources/boot.wim boot.wim
 boot
 
 :option_four
 kernel https://boot.netboot.xyz/memdisk raw iso
-initrd ${localurl}/Hirens.BootCD.15.2.iso
-boot || goto custom_exit
-
-:option_five
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd ${localurl}/xcp-ng-8.2.0-netinstall.iso
+initrd http://torrent.serenity.local:8081/Hirens.BootCD.15.2.iso
 boot || goto custom_exit
 
 :custom_exit
