@@ -48,7 +48,7 @@ initrd -n bcd         http://torrent.serenity.local:8081/Win10_20H2/boot/bcd    
 initrd -n bcd         http://torrent.serenity.local:8081/Win10_20H2/Boot/BCD      bcd ||
 initrd -n boot.sdi    http://torrent.serenity.local:8081/Win10_20H2/boot/boot.sdi boot.sdi ||
 initrd -n boot.sdi    http://torrent.serenity.local:8081/Win10_20H2/Boot/boot.sdi boot.sdi ||
-initrd -n boot.wim    http://torrent.serenity.local:8081/Win10_20H2/sources/boot.wim boot.wim
+initrd -n boot.wim    http://torrent.serenity.local:8081/Win10_20H2/x64/sources/boot.wim boot.wim
 boot
 
 :option_win101511
@@ -61,7 +61,7 @@ initrd -n bcd         http://torrent.serenity.local:8081/Win10_1511/boot/bcd    
 initrd -n bcd         http://torrent.serenity.local:8081/Win10_1511/Boot/BCD      bcd ||
 initrd -n boot.sdi    http://torrent.serenity.local:8081/Win10_1511/boot/boot.sdi boot.sdi ||
 initrd -n boot.sdi    http://torrent.serenity.local:8081/Win10_1511/Boot/boot.sdi boot.sdi ||
-initrd -n boot.wim    http://torrent.serenity.local:8081/Win10_1511/sources/boot.wim boot.wim
+initrd -n boot.wim    http://torrent.serenity.local:8081/Win10_1511/x64/sources/boot.wim boot.wim
 boot
 
 :option_four
