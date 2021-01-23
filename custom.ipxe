@@ -25,10 +25,6 @@ echo ${cls}
 goto ${custom_choice}
 goto custom_exit
 
-### Variable for local software host
-### 23/1/2020: Variable URL not working. Replaced each with actual URL below.
-### set localurl http://torrent.serenity.local:8081
-
 :option_one
 kernel https://boot.netboot.xyz/memdisk raw iso
 initrd http://torrent.serenity.local:8081/ubuntu-budgie-20.04-desktop-amd64.iso
@@ -46,29 +42,29 @@ initrd ${base-url}/initrd.gz
 boot
 
 :option_win1020h2
-set url ${localurl}/Win10_20H2/x64
+set base-url http://torrent.serenity.local:8081/Win10_20H2
 imgfree
 kernel http://${boot_domain}/wimboot
-initrd -n bootmgr     http://torrent.serenity.local:8081/Win10_20H2/bootmgr       bootmgr ||
-initrd -n bootmgr.efi http://torrent.serenity.local:8081/Win10_20H2/bootmgr.efi   bootmgr.efi ||      
-initrd -n bcd         http://torrent.serenity.local:8081/Win10_20H2/boot/bcd      bcd ||
-initrd -n bcd         http://torrent.serenity.local:8081/Win10_20H2/Boot/BCD      bcd ||
-initrd -n boot.sdi    http://torrent.serenity.local:8081/Win10_20H2/boot/boot.sdi boot.sdi ||
-initrd -n boot.sdi    http://torrent.serenity.local:8081/Win10_20H2/Boot/boot.sdi boot.sdi ||
-initrd -n boot.wim    http://torrent.serenity.local:8081/Win10_20H2/x64/sources/boot.wim boot.wim
+initrd -n bootmgr     ${base-url}/bootmgr       bootmgr ||
+initrd -n bootmgr.efi ${base-url}/bootmgr.efi   bootmgr.efi ||      
+initrd -n bcd         ${base-url}/boot/bcd      bcd ||
+initrd -n bcd         ${base-url}/Boot/BCD      bcd ||
+initrd -n boot.sdi    ${base-url}/boot/boot.sdi boot.sdi ||
+initrd -n boot.sdi    ${base-url}/Boot/boot.sdi boot.sdi ||
+initrd -n boot.wim    ${base-url}/x64/sources/boot.wim boot.wim
 boot
 
 :option_win101511
-set url ${localurl}/Win10_1511/x64
+set base-url http://torrent.serenity.local:8081/Win10__1511
 imgfree
 kernel http://${boot_domain}/wimboot
-initrd -n bootmgr     http://torrent.serenity.local:8081/Win10_1511/bootmgr       bootmgr ||
-initrd -n bootmgr.efi http://torrent.serenity.local:8081/Win10_1511/bootmgr.efi   bootmgr.efi ||      
-initrd -n bcd         http://torrent.serenity.local:8081/Win10_1511/boot/bcd      bcd ||
-initrd -n bcd         http://torrent.serenity.local:8081/Win10_1511/Boot/BCD      bcd ||
-initrd -n boot.sdi    http://torrent.serenity.local:8081/Win10_1511/boot/boot.sdi boot.sdi ||
-initrd -n boot.sdi    http://torrent.serenity.local:8081/Win10_1511/Boot/boot.sdi boot.sdi ||
-initrd -n boot.wim    http://torrent.serenity.local:8081/Win10_1511/x64/sources/boot.wim boot.wim
+initrd -n bootmgr     ${base-url}/bootmgr       bootmgr ||
+initrd -n bootmgr.efi ${base-url}/bootmgr.efi   bootmgr.efi ||      
+initrd -n bcd         ${base-url}/boot/bcd      bcd ||
+initrd -n bcd         ${base-url}/Boot/BCD      bcd ||
+initrd -n boot.sdi    ${base-url}/boot/boot.sdi boot.sdi ||
+initrd -n boot.sdi    ${base-url}/Boot/boot.sdi boot.sdi ||
+initrd -n boot.wim    ${base-url}/x64/sources/boot.wim boot.wim
 boot
 
 :option_four
