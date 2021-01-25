@@ -45,9 +45,9 @@ boot
 :option_winpe
 set base-url http://torrent.serenity.local:8081/winpe
 kernel ${base-url}/wimboot
-initrd ${base-url}/media/boot/bcd          BCD
-initrd ${base-url}/media/boot/boot.sdi     boot.sdi
-initrd ${base-url}/media/sources/boot.wim  boot.wim
+initrd ${base-url}/boot/bcd          BCD
+initrd ${base-url}/boot/boot.sdi     boot.sdi
+initrd ${base-url}/sources/boot.wim  boot.wim
 boot
 
 :option_win1020h2
