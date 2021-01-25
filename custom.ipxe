@@ -11,6 +11,7 @@ item option_one ${space} Ubuntu Budgie 20.04
 item option_two ${space} Ubuntu Server 20.04
 item option_ubuntutest ${space} Ubuntu Netboot Test
 item --gap
+item option_winpe ${space} Windows PE
 item option_win1020h2 ${space} Windows 10 20H2 Install
 item option_win101511 ${space} Windows 10 1511 Install
 item --gap
@@ -39,6 +40,15 @@ boot || goto custom_exit
 set base-url http://archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/current/legacy-images/netboot/ubuntu-installer/amd64/
 kernel ${base-url}/linux console=ttyS1,115200n8
 initrd ${base-url}/initrd.gz
+boot
+
+:option_winpe
+set base-url http://torrent.serenity.local:8081/
+cpuid --ext 29 && set arch amd64 || set arch x86
+kernel wimboot
+initrd ${arch}/ISO/boot/bcd          BCD
+initrd ${arch}/ISO/boot/boot.sdi     boot.sdi
+initrd -n boot.wim ${arch}/winpe.wim boot.wim
 boot
 
 :option_win1020h2
