@@ -43,12 +43,12 @@ initrd ${base-url}/initrd.gz
 boot
 
 :option_winpe
-set base-url http://torrent.serenity.local:8081/
+set base-url http://torrent.serenity.local:8081/winpe_amd64
 cpuid --ext 29 && set arch amd64 || set arch x86
-kernel wimboot
-initrd ${arch}/ISO/boot/bcd          BCD
-initrd ${arch}/ISO/boot/boot.sdi     boot.sdi
-initrd -n boot.wim ${arch}/winpe.wim boot.wim
+kernel ${base-url}/wimboot
+initrd ${base-url}/media/boot/bcd          BCD
+initrd ${base-url}/media/boot/boot.sdi     boot.sdi
+initrd -n boot.wim ${base-url}/media/sources/winpe.wim boot.wim
 boot
 
 :option_win1020h2
