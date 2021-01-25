@@ -45,15 +45,15 @@ boot
 :option_winpe
 set base-url http://torrent.serenity.local:8081/winpe
 kernel ${base-url}/wimboot
-initrd ${base-url}/boot/bcd          BCD
-initrd ${base-url}/boot/boot.sdi     boot.sdi
-initrd ${base-url}/sources/boot.wim  boot.wim
+initrd -n bcd         ${base-url}/boot/bcd          BCD
+initrd -n boot.sdi    ${base-url}/boot/boot.sdi     boot.sdi
+initrd -n boot.wim    ${base-url}/sources/boot.wim  boot.wim
 boot
 
 :option_win1020h2
 set base-url http://torrent.serenity.local:8081/Win10_20H2
 imgfree
-kernel http://${boot_domain}/wimboot
+kernel ${boot_domain}/wimboot
 initrd -n bootmgr     ${base-url}/bootmgr       bootmgr ||
 initrd -n bootmgr.efi ${base-url}/bootmgr.efi   bootmgr.efi ||      
 initrd -n bcd         ${base-url}/boot/bcd      bcd ||
@@ -66,7 +66,7 @@ boot
 :option_win101511
 set base-url http://torrent.serenity.local:8081/Win10__1511
 imgfree
-kernel http://${boot_domain}/wimboot
+kernel ${boot_domain}/wimboot
 initrd -n bootmgr     ${base-url}/bootmgr       bootmgr ||
 initrd -n bootmgr.efi ${base-url}/bootmgr.efi   bootmgr.efi ||      
 initrd -n bcd         ${base-url}/boot/bcd      bcd ||
@@ -77,8 +77,9 @@ initrd -n boot.wim    ${base-url}/x64/sources/boot.wim boot.wim
 boot
 
 :option_four
+set base-url http://torrent.serenity.local:8081/
 kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://torrent.serenity.local:8081/Hirens.BootCD.15.2.iso
+initrd ${base-url}/Hirens.BootCD.15.2.iso
 boot || goto custom_exit
 
 :custom_exit
