@@ -48,7 +48,7 @@ cpuid --ext 29 && set arch amd64 || set arch x86
 kernel ${base-url}/wimboot
 initrd ${base-url}/media/boot/bcd          BCD
 initrd ${base-url}/media/boot/boot.sdi     boot.sdi
-initrd -n boot.wim ${base-url}/media/sources/winpe.wim boot.wim
+initrd -n boot.wim ${base-url}/media/sources/boot.wim boot.wim
 boot
 
 :option_win1020h2
